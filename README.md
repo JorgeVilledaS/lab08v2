@@ -1,16 +1,49 @@
-# React + Vite
+# Verificador de Contraseñas 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Componente de React que evalúa la fortaleza de una contraseña en tiempo real, construido siguiendo el flujo de Test Driven Development (TDD).
 
-Currently, two official plugins are available:
+## Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+```
 
-## React Compiler
+## Correr los tests
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm test
+```
 
-## Expanding the ESLint configuration
+## Correr en modo desarrollo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev
+```
+
+## Flujo TDD seguido
+
+1. **Configuración**: se creó el proyecto con Vite y se configuró Vitest y React Testing Library manualmente.
+
+2. **Tests primero (red)**: se escribieron todos los tests antes de existir cualquier implementación. En este punto todos los tests fallaban porque los archivos `passwordStrength.js` y `PasswordStrengthMeter.jsx` no existían aún. Se hizo commit en este estado.
+
+3. **Implementación (green)**: se implementó la función pura `getPasswordStrength` y el componente `PasswordStrengthMeter` con el mínimo código necesario para que todos los tests pasaran.
+
+## Estructura del proyecto
+
+src/
+├── passwordStrength.js            # Lógica pura de cálculo de fortaleza
+├── passwordStrength.test.js       # Tests unitarios de la función
+├── PasswordStrengthMeter.jsx      # Componente React
+├── PasswordStrengthMeter.test.jsx # Tests del componente
+└── setupTests.js                  # Configuración de jest-dom
+
+## Reglas de fortaleza
+
+| Condición | Fortaleza |
+|---|---|
+| Contraseña vacía | vacía |
+| Menos de 8 caracteres | débil |
+| 8+ caracteres, sin números ni símbolos | media |
+| 8+ caracteres con al menos un número | fuerte |
+| 8+ caracteres con número y símbolo | muy fuerte |
+
