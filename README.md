@@ -30,12 +30,14 @@ npm run dev
 
 ## Estructura del proyecto
 
+```
 src/
 ├── passwordStrength.js            # Lógica pura de cálculo de fortaleza
 ├── passwordStrength.test.js       # Tests unitarios de la función
 ├── PasswordStrengthMeter.jsx      # Componente React
 ├── PasswordStrengthMeter.test.jsx # Tests del componente
 └── setupTests.js                  # Configuración de jest-dom
+```              
 
 ## Reglas de fortaleza
 
